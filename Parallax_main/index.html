@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Parallax Creations </title>
+  </head>
+  <body>
+    <div class="container">
+      <img src="crea.jpg" alt="parallax" />
+      <img id="back-2" src="moon.png" alt="parallax" />
+      <h1 id="title">Creations</h1>
+      <img id="back-3" src="mount.png" alt="parallax" />
+    </div>
+    <section class="contents">
+      <div class="image__gallary">
+        <div class="image__card" id="image__card-1">
+          <img src="beach.jpg" alt="grid" />
+        </div>
+        <div class="image__card" id="image__card-2">
+          <img src="tree.jpg" alt="grid" />
+        </div>
+        <div class="image__card" id="image__card-3">
+          <img src="images.jpg" alt="grid" />
+        </div>
+        <div class="image__card" id="image__card-4">
+          <img src="swiss.webp" alt="grid" />
+        </div>
+      </div>
+      <div class="description">
+        In the world's canvas, diverse creations emerge: towering mountains, vast oceans, whispering forests, and bustling cities. Life thrives in myriad forms, from microscopic organisms to grand civilizations. Each element weaves a tapestry of beauty, resilience, and wonder.
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("scroll", () => {
+    const title = document.getElementById("title");
+    const bg_2 = document.getElementById("back-2");
+    const bg_3 = document.getElementById("back-3");
+
+    const image_card_1 = document.getElementById("image__card-1");
+    const image_card_2 = document.getElementById("image__card-2");
+    const image_card_3 = document.getElementById("image__card-3");
+    const image_card_4 = document.getElementById("image__card-4");
+
+    const positionY = window.scrollY;
+
+    title.style.fontSize = `${100 + positionY * 0.5}px`;
+
+    bg_2.style.top = `-${positionY * 0.5}px`;
+    bg_3.style.top = `-${positionY}px`;
+    bg_3.style.transform = `scale(${1 + positionY * 0.001})`;
+
+    image_card_1.style.transform = `translateY(${-positionY * 0.5 + 400}px)`;
+    image_card_2.style.transform = `translateY(${positionY * 0.1 - 50}px)`;
+    image_card_3.style.transform = `translateY(${-positionY * 0.1 + 100}px)`;
+    image_card_4.style.transform = `translateY(${positionY * 0.2 - 125}px)`;
+
+    const newOpacity = positionY * 0.001;
+    if (newOpacity >= 0 && newOpacity <= 1) {
+        image_card_1.style.opacity = newOpacity;
+        image_card_2.style.opacity = newOpacity;
+        image_card_3.style.opacity = newOpacity;
+        image_card_4.style.opacity = newOpacity;
+    }
+});
+    </script>
+  </body>
+</html>
